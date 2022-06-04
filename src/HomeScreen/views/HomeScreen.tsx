@@ -38,7 +38,6 @@ export const HomeScreen: NavigationFunctionComponent<Props> = props => {
     const {data} = await client.query({
       query: GET_COUNTRIES,
     });
-    console.log('data', data);
     setCountriesData(data.countries);
   };
   const gotoDetails = (code: string) => {

@@ -47,7 +47,6 @@ export const ContinentDetailScreen: NavigationFunctionComponent<Props> = props =
       query: GET_CONTINENT_DETAILS,
       variables: {code: props.data.code},
     });
-    console.log('data', data.country);
     setContinentData(data.country);
   };
 

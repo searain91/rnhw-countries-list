@@ -46,7 +46,6 @@ export const CountryDetailScreen: NavigationFunctionComponent<Props> = props => 
       query: GET_COUNTRY_DETAILS,
       variables: {code: props.data.code},
     });
-    console.log('data', data.country);
     setCountriesData(data.country);
   };
 
