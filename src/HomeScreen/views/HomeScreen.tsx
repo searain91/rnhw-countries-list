@@ -40,6 +40,7 @@ export const HomeScreen: NavigationFunctionComponent<Props> = props => {
     });
     setCountriesData(data.countries);
   };
+
   const gotoDetails = (code: string) => {
     gotoCountriesDetail(props.componentId, {code});
   };

@@ -6,10 +6,12 @@ import {
   FlatList,
   ListRenderItem,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 import gql from 'graphql-tag';
 import {client} from '../../config/client';
+import {gotoCountriesDetail} from '~/navigation/home';
 
 type Props = {
   data: {
@@ -25,6 +27,7 @@ const GET_CONTINENT_DETAILS = gql`
         name
         code
         countries {
+          code
           name
         }
       }
@@ -50,11 +53,17 @@ export const ContinentDetailScreen: NavigationFunctionComponent<Props> = props =
     setContinentData(data.country);
   };
 
+  const gotoDetails = (code: string) => {
+    gotoCountriesDetail(props.componentId, {code});
+  };
+
   const renderItem: ListRenderItem<continentDetail.Countries> = ({item}) => {
     return (
-      <View style={styles.viewDetail}>
+      <TouchableOpacity
+        style={styles.viewDetail}
+        onPress={() => gotoDetails(item.code)}>
         <Text style={styles.underline}>{item.name}</Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -125,6 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 5,
     alignItems: 'flex-end',
+    paddingVertical: 2,
   },
   contentContainer: {
     display: 'flex',

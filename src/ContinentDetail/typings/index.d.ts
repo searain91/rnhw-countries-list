@@ -10,6 +10,7 @@ declare namespace continentDetail {
   }
 
   interface Countries {
+    code: string;
     name: string;
   }
 }
